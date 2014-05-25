@@ -1,0 +1,11 @@
+
+<<<<<<< HEAD
+public class Player {
+	
+	char piece = 'O';
+=======
+class Player
+{
+>>>>>>> 28cdef473cbde0b8084a734f9d3dff4a4713d25f
+
+}

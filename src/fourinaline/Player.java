@@ -4,7 +4,9 @@ import java.util.*;
 class Player
 {
 	private char piece = 'O';
-	public Player(Board b, String s)
+	private Board playerB;
+	public Player(Board b)   {playerB = b;}
+	public void makeMove(String s)
 	{
 		int row = findIndexLetter(s.charAt(0));
 		int col = findIndex(s.charAt(1));

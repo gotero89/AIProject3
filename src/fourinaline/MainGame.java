@@ -8,7 +8,7 @@ public class MainGame {
 		
 		
 		System.out.println("XOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXO");
-		System.out.println("     Welcome to  Tic-Tac-Toe      ");
+		System.out.println("     Welcome to  4-In-A-Line     ");
 		System.out.println("XOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXOXO");
 		
 		System.out.println("\n1. Play Game");

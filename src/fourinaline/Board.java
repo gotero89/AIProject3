@@ -5,6 +5,8 @@ public class Board {
 	final int BOARD_SIZE = 8; //Size of board is constant
 	boolean winner; //To determine if there is winner
 	String[][] board; //2-D array to represent the board
+	boolean winnerComputer;
+	boolean winnerPlayer;
 	
 	
 	//Constructor initializes the board
@@ -13,6 +15,9 @@ public class Board {
 		
 		//Set winner to false initially
 		winner = false;
+		winnerComputer = false;
+		winnerPlayer = false;
+		
 		
 		//Initialize the board
 		board = new String[BOARD_SIZE][BOARD_SIZE];
@@ -24,7 +29,19 @@ public class Board {
 			}
 			
 		}
-			
+		
+	}
+	
+	public boolean isWinnerComputer() {
+		return winnerComputer;
+	}
+	
+	public boolean isWinnerPlayer() {
+		return winnerPlayer;
+	}
+	
+	public boolean isWinner() {
+		return winner;
 	}
 	
 	/*
@@ -33,8 +50,51 @@ public class Board {
 	 */
 	
 	public void checkWinner() {
+		//Set winner = true if there is a winner
+		//to stop the game
+		int countX = 0;
+		int countO = 0;
 		
+		//Traverse the board and check if there are 4 in a line
+		for(int i = 0; i < board.length; i++) {
+			
+			for(int j = 0; j < board.length; j++) {
+				
+				//Found placed piece
+				if(board[i][j].equals("X")) {
+					countX++;
+					//Check horizontal win
+					for(int k = j; k < (j+4); k++) {
+						if(board[i][k].equals("X"))
+							countX++;
+					}
+					
+					if(countX == 4) {
+						winner = true; //found a winner
+						winnerPlayer = true;
+					}
+					
+				}
+				
+				
+			}
+			
+		}
 	}
+	
+	//Will set a piece on the board
+	public boolean setPiece(String p, int r, int c) {
+		
+		boolean pieceWasSet = false;
+
+		if(board[r][c].equals("-")) {
+			board[r][c] = p;
+			pieceWasSet = true;
+		}
+		
+		return pieceWasSet;
+	}
+	
 	
 	//This method will print the board
 	public void printBoard() {
@@ -51,6 +111,12 @@ public class Board {
 			
 			System.out.print("\n");
 		}
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		
 		
 	}
 	

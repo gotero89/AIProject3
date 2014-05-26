@@ -83,14 +83,18 @@ public class Board {
 	}
 	
 	//Will set a piece on the board
-	public void setPiece(String p, int r, int c) {
+	public boolean setPiece(String p, int r, int c) {
 		
-		if(isIndexValid(r,c)==true)   {board[r][c] = p;}
+		if(isIndexValid(r,c)==true)   {board[r][c] = p; return true;}
+		
+		System.out.println("\nSpot already taken");
+		return false;
 	}
 	
-	public boolean isIndexValid(int r, int c)
+	//will check that the spot is empty
+	private boolean isIndexValid(int r, int c)
 	{
-		if(board[r][c].equals("-"))   {return true;}
+		if(board[r][c].equals("-"))   { return true;}
 		return false;
 	}
 	
@@ -104,7 +108,7 @@ public class Board {
 		for(int i = 0; i < board.length; i++) {
 			System.out.print((char)charValue++ + " ");
 			for(int j = 0; j < board.length; j++) {
-				System.out.print("-" + " ");
+				System.out.print(board[i][j] + " ");
 			}
 			
 			System.out.print("\n");

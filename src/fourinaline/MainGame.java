@@ -3,6 +3,7 @@ package fourinaline;
 import java.util.Scanner;
 
 public class MainGame {
+	
 
 	public static void main(String[] args) {
 		
@@ -22,7 +23,36 @@ public class MainGame {
 		switch(choice) {
 		//User wants to play a game
 		case 1:
-			Board board = new Board();
+			Board board = new Board(); //set up the board
+			Player player = new Player(board); //set up the player
+						
+			Scanner sc = new Scanner(System.in);
+			
+			boolean invalidMove = true;
+			
+			while(invalidMove) {
+				board.printBoard();
+				System.out.print("\nEnter your move: ");
+				String s = sc.next();
+				if(player.makeMove(s)) {
+					invalidMove = false;
+				}
+			}
+				
+			invalidMove = true;
+			
+			while(invalidMove) {
+				board.printBoard();
+				System.out.print("\nEnter your move: ");
+				String s = sc.next();
+				if(player.makeMove(s)) {
+					invalidMove = false;
+				}
+			}
+			
+			
+			
+		
 			board.printBoard();
 			break;
 		//Quit the game

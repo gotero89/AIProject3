@@ -6,12 +6,21 @@ class Player
 	private String piece = "O";
 	private Board playerB;
 	public Player(Board b)   {playerB = b;}
-	public void makeMove(String s)
+	public boolean makeMove(String s)
 	{
+		boolean madeMove = false;
+		
 		int row = findIndexLetter(s.charAt(0));
 		int col = findIndex(s.charAt(1));
-		if(!(nonExistentMove(row)||nonExistentMove(col)))
-			playerB.setPiece(piece,row,col);
+		if(!(nonExistentMove(row)||nonExistentMove(col))) {
+			madeMove = playerB.setPiece(piece,row,col);
+			//System.out.println("Piece is setting");
+			return madeMove;
+		}
+		
+		System.out.println("\nInvalid move");
+		
+		return madeMove;
 	}
 	//return -1 if invalid input
 	public int findIndexLetter(char ch)

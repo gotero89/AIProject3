@@ -11,7 +11,7 @@ class Player
 		int row = findIndexLetter(s.charAt(0));
 		int col = findIndex(s.charAt(1));
 		if(!(nonExistentMove(row)||nonExistentMove(col)))
-			b.setPiece(piece,row,col);
+			playerB.setPiece(piece,row,col);
 	}
 	//return -1 if invalid input
 	public int findIndexLetter(char ch)

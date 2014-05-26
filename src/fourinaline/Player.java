@@ -1,3 +1,4 @@
+package fourinaline;
 
 class Player
 {

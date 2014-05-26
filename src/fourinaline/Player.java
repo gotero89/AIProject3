@@ -3,14 +3,15 @@ import java.util.*;
 
 class Player
 {
-	private char piece = 'O';
+	private String piece = "O";
 	private Board playerB;
 	public Player(Board b)   {playerB = b;}
 	public void makeMove(String s)
 	{
 		int row = findIndexLetter(s.charAt(0));
 		int col = findIndex(s.charAt(1));
-		b.setPiece(piece,row,col);
+		if(!(nonExistentMove(row)||nonExistentMove(col)))
+			b.setPiece(piece,row,col);
 	}
 	//return -1 if invalid input
 	public int findIndexLetter(char ch)
@@ -37,5 +38,10 @@ class Player
 		if(Character.getNumericValue(ch)==7)   {return 6;}
 		if(Character.getNumericValue(ch)==8)   {return 7;}
 		return -1;
+	}
+	public boolean nonExistentMove(int n)
+	{
+		if (n==-1)   {return true;}
+		return false;
 	}
 }

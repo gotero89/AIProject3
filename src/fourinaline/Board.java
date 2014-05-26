@@ -83,18 +83,16 @@ public class Board {
 	}
 	
 	//Will set a piece on the board
-	public boolean setPiece(String p, int r, int c) {
+	public void setPiece(String p, int r, int c) {
 		
-		boolean pieceWasSet = false;
-
-		if(board[r][c].equals("-")) {
-			board[r][c] = p;
-			pieceWasSet = true;
-		}
-		
-		return pieceWasSet;
+		if(isIndexValid(r,c)==true)   {board[r][c] = p;}
 	}
 	
+	public boolean isIndexValid(int r, int c)
+	{
+		if(board[r][c].equals("-"))   {return true;}
+		return false;
+	}
 	
 	//This method will print the board
 	public void printBoard() {

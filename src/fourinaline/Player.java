@@ -6,6 +6,10 @@ class Player
 	private String piece = "O";
 	private Board playerB;
 	public Player(Board b)   {playerB = b;}
+	public Player(Board b, String piece) {
+		this.piece = piece;
+		playerB = b;
+	}
 	public boolean makeMove(String s)
 	{
 		boolean madeMove = false;

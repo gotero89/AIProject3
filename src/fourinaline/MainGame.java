@@ -25,30 +25,44 @@ public class MainGame {
 		case 1:
 			Board board = new Board(); //set up the board
 			Player player = new Player(board); //set up the player
+			Player player2 = new Player(board, "X");
 						
 			Scanner sc = new Scanner(System.in);
+			boolean invalidMove = false;
 			
-			boolean invalidMove = true;
-			
-			while(invalidMove) {
+			//Start playing game until there is a winner
+			while(!board.isWinner()) {
+				
 				board.printBoard();
+				board.checkWinner();
 				System.out.print("\nEnter your move: ");
-				String s = sc.next();
-				if(player.makeMove(s)) {
-					invalidMove = false;
+				invalidMove = player.makeMove(sc.next());
+				
+				
+				while(!invalidMove) {
+					board.printBoard();
+					System.out.print("\nEnter your move: ");
+					invalidMove = player.makeMove(sc.next());
 				}
+				
+				if(board.isWinner())
+					break;
+				
+				
+				board.printBoard();
+				System.out.print("\nEnter move computer: ");
+				invalidMove = player2.makeMove(sc.next());
+				while(!invalidMove) {
+					board.printBoard();
+					System.out.print("\nEnter move computer: ");
+					invalidMove = player2.makeMove(sc.next());
+				}
+				
+				if(board.isWinner())
+					break;
+				
 			}
 				
-			invalidMove = true;
-			
-			while(invalidMove) {
-				board.printBoard();
-				System.out.print("\nEnter your move: ");
-				String s = sc.next();
-				if(player.makeMove(s)) {
-					invalidMove = false;
-				}
-			}
 			
 			
 			

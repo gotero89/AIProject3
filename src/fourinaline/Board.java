@@ -61,23 +61,80 @@ public class Board {
 			for(int j = 0; j < board.length; j++) {
 				
 				//Found placed piece
-				if(board[i][j].equals("X")) {
-					countX++;
+				if(board[i][j].equals("O")) {
 					//Check horizontal win
 					for(int k = j; k < (j+4); k++) {
-						if(board[i][k].equals("X"))
+						if(board[i][k].equals("O")) {
+							
+							countO++;
+							System.out.println("Found a circle");
+						}
+					}
+					
+					if(countO == 4) {
+						winner = true; //found a winner
+						winnerPlayer = true;
+						return;
+					}
+					
+					//Check vertical win
+					for(int v = i; v < (i+4); v++) {
+						if(board[v][j].equals("O"))
+							countO++;
+					}
+					
+					if(countO == 4) {
+						winner = true;
+						winnerPlayer = true;
+						return;
+					}
+					
+
+					countO = 0;
+					countX = 0;
+				}
+				
+				else if(board[i][j].equals("X")) {
+					
+					
+					for(int k = j; k < (j+4); k++) {
+						if(board[i][k].equals("X")) {
+							
 							countX++;
+							
+						}
 					}
 					
 					if(countX == 4) {
 						winner = true; //found a winner
-						winnerPlayer = true;
+						winnerComputer = true;
+						return;
 					}
+					
+					//Check vertical win
+					for(int v = i; v < (i+4); v++) {
+						if(board[v][j].equals("x"))
+							countX++;
+					}
+					
+					if(countX == 4) {
+						winner = true;
+						winnerComputer = true;
+						return;
+					}
+					
+
+					countO = 0;
+					countX = 0;
+					
+					
 					
 				}
 				
 				
 			}
+			
+			
 			
 		}
 	}

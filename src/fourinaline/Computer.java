@@ -266,8 +266,8 @@ public class Computer extends Player
 		{
 			for(int i=row-1;i>=row-3;i--)
 			{
-				if(i!=-1 && b.board[i][col].equals("X"))   {break;}
-				if(i!=-1 && b.board[i][col].equals("O"))
+				if(i>-1 && b.board[i][col].equals("X"))   {break;}
+				if(i>-1 && b.board[i][col].equals("O"))
 				{
 					if(i==row-1)   {points+=100;}
 					if(i==row-2)   {points+=100;}
@@ -280,8 +280,8 @@ public class Computer extends Player
 		{
 			for(int i=col+1;i<=col+3;i++)
 			{
-				if(i!=8 && b.board[row][i].equals("X"))   {break;}
-				if(i!=8 && b.board[row][i].equals("O"))
+				if(i<8 && b.board[row][i].equals("X"))   {break;}
+				if(i<8 && b.board[row][i].equals("O"))
 				{
 					if(i==col+1)   {points+=100;}
 					if(i==col+2)   {points+=100;}
@@ -295,8 +295,8 @@ public class Computer extends Player
 		{
 			for(int i=row+1;i>=row-3;i--)
 			{
-				if(i!=8 && b.board[i][col].equals("X"))   {break;}
-				if(i!=8 && b.board[i][col].equals("O"))
+				if(i<8 && b.board[i][col].equals("X"))   {break;}
+				if(i<8 && b.board[i][col].equals("O"))
 				{
 					if(i==row+1)   {points+=100;}
 					if(i==row+2)   {points+=100;}
@@ -309,8 +309,8 @@ public class Computer extends Player
 		{
 			for(int i=col-1;i>=col-3;i--)
 			{
-				if(i!=-1 && b.board[row][i].equals("O"))   {break;}
-				if(i!=-1 && b.board[row][i].equals("X"))
+				if(i>-1 && b.board[row][i].equals("O"))   {break;}
+				if(i>-1 && b.board[row][i].equals("X"))
 				{
 					if(i==col-1)   {points+=100;}
 					if(i==col-2)   {points+=100;}

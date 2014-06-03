@@ -3,10 +3,11 @@ package fourinaline;
 public class Board {
 	
 	final int BOARD_SIZE = 8; //Size of board is constant
-	boolean winner; //To determine if there is winner
+	private boolean winner; //To determine if there is winner
 	String[][] board; //2-D array to represent the board
-	boolean winnerComputer;
-	boolean winnerPlayer;
+	private boolean winnerComputer;
+	private boolean winnerPlayer;
+	private int boardScore;
 	
 	
 	//Constructor initializes the board
@@ -30,6 +31,14 @@ public class Board {
 			
 		}
 		
+	}
+	
+	public int getBoardScore() {
+		return boardScore;
+	}
+	
+	public void setBoardScore(int boardScore) {
+		this.boardScore = boardScore;
 	}
 	
 	public boolean isWinnerComputer() {
@@ -58,7 +67,7 @@ public class Board {
 		//Traverse the board and check if there are 4 in a line
 		for(int i = 0; i < board.length; i++) {
 			
-			for(int j = 0; j < board.length; j++) {
+			for(int j = 0; j < board.length; j++) { 
 				
 				//Found placed piece
 				if(board[i][j].equals("O")) {
@@ -67,7 +76,7 @@ public class Board {
 						if(board[i][k].equals("O")) {
 							
 							countO++;
-							System.out.println("Found a circle");
+							
 						}
 					}
 					
@@ -76,6 +85,8 @@ public class Board {
 						winnerPlayer = true;
 						return;
 					}
+					
+					countO = 0;
 					
 					//Check vertical win
 					for(int v = i; v < (i+4); v++) {
@@ -135,6 +146,7 @@ public class Board {
 			}
 			
 			
+				
 			
 		}
 	}
@@ -173,6 +185,14 @@ public class Board {
 		
 	}
 	
+	/*
+	 * Returns the current state of the board
+	 */
+	
+	public Board currentBoard() {
+		return this;
+	}
+ 	
 	public static void main(String[] args) {
 		
 		

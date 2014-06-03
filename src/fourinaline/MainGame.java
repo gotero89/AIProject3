@@ -26,6 +26,9 @@ public class MainGame {
 			Board board = new Board(); //set up the board
 			Player player = new Player(board); //set up the player
 			Player player2 = new Player(board, "X");
+			
+			//TESTING AI
+			Computer computer = new Computer(board, false);
 						
 			Scanner sc = new Scanner(System.in);
 			boolean invalidMove = false;
@@ -56,18 +59,26 @@ public class MainGame {
 					board.printBoard();
 					System.out.print("\nEnter move computer: ");
 					invalidMove = player2.makeMove(sc.next());
+					
 				}
+				
+				//System.out.println("\nPoints gotten: " + computer.evaluate(board));
 				
 				if(board.isWinner())
 					break;
 				
 			}
-				
 			
-			
-			
-		
 			board.printBoard();
+			
+			if(board.isWinnerComputer()) {
+				System.out.println("\nComputer won");
+			}
+			
+			else if(board.isWinnerPlayer()) {
+				System.out.println("\nPlayer won");
+			}
+			
 			break;
 		//Quit the game
 		case 2:

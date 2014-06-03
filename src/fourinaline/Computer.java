@@ -293,7 +293,7 @@ public class Computer extends Player
 		}
 		if(direction=='d')
 		{
-			for(int i=row+1;i>=row-3;i--)
+			for(int i=row+1;i<=row+3;i++)
 			{
 				if(i<8 && b.board[i][col].equals("X"))   {break;}
 				if(i<8 && b.board[i][col].equals("O"))

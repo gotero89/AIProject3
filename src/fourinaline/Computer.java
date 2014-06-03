@@ -1,10 +1,11 @@
 package fourinaline;
+import java.util.*;
 
 import java.util.ArrayList;
 
 public class Computer extends Player
 {
-	private String piece = "O";
+	private String piece = "X";
 	private Board computerB;
 	private boolean first;
 	private long timer;
@@ -138,7 +139,6 @@ public class Computer extends Player
 		return ((System.currentTimeMillis() - timer) > 5000)
 				|| (depth == 0);
 	}
-	
 	//return the highest points for that board
 	public int evaluate(Board b)
 	{
@@ -330,8 +330,8 @@ public class Computer extends Player
 		{
 			for(int i=row-1;i>=row-3;i--)
 			{
-				if(i!=-1 && b.board[i][col].equals("O"))   {break;}
-				if(i!=-1 && b.board[i][col].equals("X"))
+				if(i>-1 && b.board[i][col].equals("O"))   {break;}
+				if(i>-1 && b.board[i][col].equals("X"))
 				{
 					if(i==row-1)   {points+=100;}
 					if(i==row-2)   {points+=200;}
@@ -343,8 +343,8 @@ public class Computer extends Player
 		{
 			for(int i=col+1;i<=col+3;i++)
 			{
-				if(i!=8 && b.board[row][i].equals("O"))   {break;}
-				if(i!=8 && b.board[row][i].equals("X"))
+				if(i<8 && b.board[row][i].equals("O"))   {break;}
+				if(i<8 && b.board[row][i].equals("X"))
 				{
 					if(i==col+1)   {points+=100;}
 					if(i==col+2)   {points+=200;}
@@ -357,8 +357,8 @@ public class Computer extends Player
 		{
 			for(int i=row+1;i>=row-3;i--)
 			{
-				if(i!=8 && b.board[i][col].equals("O"))   {break;}
-				if(i!=8 && b.board[i][col].equals("X"))
+				if(i<8 && b.board[i][col].equals("O"))   {break;}
+				if(i<8 && b.board[i][col].equals("X"))
 				{
 					if(i==row+1)   {points+=100;}
 					if(i==row+2)   {points+=200;}
@@ -370,8 +370,8 @@ public class Computer extends Player
 		{
 			for(int i=col-1;i>=col-3;i--)
 			{
-				if(i!=-1 && b.board[row][i].equals("O"))   {break;}
-				if(i!=-1 && b.board[row][i].equals("X"))
+				if(i>-1 && b.board[row][i].equals("O"))   {break;}
+				if(i>-1 && b.board[row][i].equals("X"))
 				{
 					if(i==col-1)   {points+=100;}
 					if(i==col-2)   {points+=200;}

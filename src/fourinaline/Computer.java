@@ -150,7 +150,6 @@ public class Computer extends Player
 			for(int j=0;j<b.BOARD_SIZE;j++)
 			{
 				temp += checkCross(i,j,b);
-				System.out.println("Temp: " +temp);
 				if(temp>highestPts)   {highestPts=temp;}
 				temp = 0;
 				
@@ -314,7 +313,8 @@ public class Computer extends Player
 				{
 					if(i==col-1)   {points+=100;}
 					if(i==col-2)   {points+=100;}
-					if(i==col-2 && b.board[row][col+1].equals("O"))   {points+=300;}
+					if(i==col-2 && col+1!=8 && b.board[row][col+1].equals("O") )   {points+=300;}
+					else if(i==col-2 && col+1==8)   {points+=300;}
 					if(i==col-3 && b.board[row][i-1].equals("X"))   {points+=300;}
 				}
 			}

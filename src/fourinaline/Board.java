@@ -8,6 +8,8 @@ public class Board {
 	private boolean winnerComputer;
 	private boolean winnerPlayer;
 	private int boardScore;
+	final String PLAYER_PIECE = "O";
+	final String COMPUTER_PIECE = "X";
 	
 	
 	//Constructor initializes the board
@@ -64,92 +66,63 @@ public class Board {
 		int countX = 0;
 		int countO = 0;
 		
-		//Traverse the board and check if there are 4 in a line
+		//CHECK HORIZONTAL WIN
 		for(int i = 0; i < board.length; i++) {
 			
-			for(int j = 0; j < board.length; j++) { 
+			for(int j = 0; j <= board.length-4; j++) {
 				
-				//Found placed piece
-				if(board[i][j].equals("O")) {
-					//Check horizontal win
-					for(int k = j; k < (j+4); k++) {
-						if(board[i][k].equals("O")) {
-							
-							countO++;
-							
-						}
-					}
+				//Found a O piece of player
+				if(board[i][j].equals(PLAYER_PIECE)) {
 					
-					if(countO == 4) {
-						winner = true; //found a winner
-						winnerPlayer = true;
-						return;
-					}
 					
-					countO = 0;
-					
-					//Check vertical win
-					for(int v = i; v < (i+4); v++) {
-						if(board[v][j].equals("O"))
-							countO++;
-					}
-					
-					if(countO == 4) {
-						winner = true;
-						winnerPlayer = true;
-						return;
-					}
-					
-
-					countO = 0;
-					countX = 0;
+				
 				}
 				
 				else if(board[i][j].equals("X")) {
-					
-					
-					for(int k = j; k < (j+4); k++) {
-						if(board[i][k].equals("X")) {
-							
-							countX++;
-							
-						}
-					}
-					
-					if(countX == 4) {
-						winner = true; //found a winner
+					if(board[i][j].equals(COMPUTER_PIECE) && board[i][j+1].equals(COMPUTER_PIECE) 
+							&& board[i][j+2].equals(COMPUTER_PIECE) && board[i][j+3].equals(COMPUTER_PIECE)) {
+						System.out.println("FOUR IN A LINE DETECTED");
 						winnerComputer = true;
-						return;
-					}
-					
-					//Check vertical win
-					for(int v = i; v < (i+4); v++) {
-						if(board[v][j].equals("x"))
-							countX++;
-					}
-					
-					if(countX == 4) {
 						winner = true;
-						winnerComputer = true;
 						return;
 					}
-					
-
-					countO = 0;
-					countX = 0;
-					
-					
-					
 				}
+			}
+		}
+				
+				
+		//CHECK FOR VERTICAL WIN
+		for(int i = 0; i <= board.length-4; i++) {
+			
+			for(int j = 0; j < board.length; j++) {
+				
+
+				if(board[i][j].equals(PLAYER_PIECE) && board[i][j+1].equals(PLAYER_PIECE) 
+						&& board[i][j+2].equals(PLAYER_PIECE) && board[i][j+3].equals(PLAYER_PIECE)) {
+					System.out.println("FOUR IN A LINE DETECTED");
+					winnerPlayer = true;
+					winner = true;
+					return;
+				}
+				
+				
 				
 				
 			}
 			
 			
-				
-			
 		}
-	}
+		
+		
+		
+		
+		
+		
+		
+			
+			
+		
+	} //end method
 	
 	//Will set a piece on the board
 	public boolean setPiece(String p, int r, int c) {

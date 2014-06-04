@@ -38,14 +38,24 @@ public class MainGame {
 				
 				board.printBoard();
 				board.checkWinner();
+				
+				if(board.isWinner())
+					break;
+				
 				System.out.print("\nEnter your move: ");
 				invalidMove = player.makeMove(sc.next());
 				
+				board.checkWinner();
+				if(board.isWinner())
+					break;
 				
 				while(!invalidMove) {
 					board.printBoard();
 					System.out.print("\nEnter your move: ");
 					invalidMove = player.makeMove(sc.next());
+					board.checkWinner();
+					if(board.isWinner())
+						break;
 				}
 				
 				if(board.isWinner())
@@ -54,16 +64,26 @@ public class MainGame {
 				
 				board.printBoard();
 				System.out.print("\nEnter move computer: ");
+				board.checkWinner();
+				if(board.isWinner())
+					break;
 				invalidMove = player2.makeMove(sc.next());
+				System.out.println("\nPoints gotten: " + computer.evaluate(board));
+				
+				
 				while(!invalidMove) {
 					board.printBoard();
 					System.out.print("\nEnter move computer: ");
 					invalidMove = player2.makeMove(sc.next());
+					board.checkWinner();
+					if(board.isWinner())
+						break;
 					
 				}
 				
-				//System.out.println("\nPoints gotten: " + computer.evaluate(board));
+				board.checkWinner();
 				
+			
 				if(board.isWinner())
 					break;
 				

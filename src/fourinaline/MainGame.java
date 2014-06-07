@@ -25,10 +25,10 @@ public class MainGame {
 		case 1:
 			Board board = new Board(); //set up the board
 			Player player = new Player(board); //set up the player
-			Player player2 = new Player(board, "X");
+		
 			
 			//TESTING AI
-			Computer computer = new Computer(board, false);
+			Computer computer = new Computer(board, false, 10);
 						
 			Scanner sc = new Scanner(System.in);
 			boolean invalidMove = false;
@@ -58,28 +58,14 @@ public class MainGame {
 						break;
 				}
 				
-				if(board.isWinner())
-					break;
-				
-				
-				board.printBoard();
-				System.out.print("\nEnter move computer: ");
 				board.checkWinner();
+				
 				if(board.isWinner())
 					break;
-				invalidMove = player2.makeMove(sc.next());
-				System.out.println("\nPoints gotten: " + computer.evaluate(board));
 				
 				
-				while(!invalidMove) {
-					board.printBoard();
-					System.out.print("\nEnter move computer: ");
-					invalidMove = player2.makeMove(sc.next());
-					board.checkWinner();
-					if(board.isWinner())
-						break;
-					
-				}
+				//Computer makes a move now
+				computer.makeMove();
 				
 				board.checkWinner();
 				
